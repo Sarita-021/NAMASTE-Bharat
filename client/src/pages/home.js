@@ -1,7 +1,6 @@
 import react, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-
 const Home = () => {
     return (
         <>

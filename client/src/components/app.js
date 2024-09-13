@@ -20,7 +20,7 @@ function App() {
         <div className="App">
             <Router>
                 {/* <Header /> */}
-                <DashboardNav/>
+                <DashboardNav />
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/register" element={<Register />} />
