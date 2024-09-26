@@ -166,9 +166,9 @@ const SignUp = () => {
           </div>
 
           <div className="text-right">
-            <a href="#" className="text-sm text-blue-500">
+            <Link to="#" className="text-sm text-blue-500">
               Forgot password?
-            </a>
+            </Link>
           </div>
           <br />
           <button
