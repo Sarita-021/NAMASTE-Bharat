@@ -1,7 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 # misc
-**/.DS_Store
 .DS_Store
 .env
 .env.local
