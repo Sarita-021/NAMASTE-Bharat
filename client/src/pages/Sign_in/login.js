@@ -165,8 +165,8 @@ const Login = (props) => {
                         <label
                             htmlFor="email"
                             className={`absolute left-3 top-3 text-gray-500 duration-300 transform ${emailFocused || inputs.email
-                                ? "-translate-y-6 scale-75 "
-                                : "translate-y-0 scale-100"
+                                    ? "-translate-y-6 scale-75 "
+                                    : "translate-y-0 scale-100"
                                 }`}
                         >
                             Email address
@@ -189,8 +189,8 @@ const Login = (props) => {
                         <label
                             htmlFor="password"
                             className={`absolute left-3 top-3 text-gray-600 duration-300 transform ${passwordFocused || inputs.password
-                                ? "-translate-y-6 scale-75 text-blue-500"
-                                : "translate-y-0 scale-100"
+                                    ? "-translate-y-6 scale-75 text-blue-500"
+                                    : "translate-y-0 scale-100"
                                 }`}
                         >
                             Password
