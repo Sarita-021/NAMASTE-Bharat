@@ -128,8 +128,8 @@ const Register = () => {
                         <label
                             htmlFor="name"
                             className={`absolute left-3 top-3 text-gray-500 duration-300 transform ${nameFocused || inputs.name
-                                    ? "-translate-y-6 scale-75 "
-                                    : "translate-y-0 scale-100"
+                                ? "-translate-y-6 scale-75 "
+                                : "translate-y-0 scale-100"
                                 }`}
                         >
                             Name
@@ -151,8 +151,8 @@ const Register = () => {
                         <label
                             htmlFor="email"
                             className={`absolute left-3 top-3 text-gray-500 duration-300 transform ${emailFocused || inputs.email
-                                    ? "-translate-y-6 scale-75 "
-                                    : "translate-y-0 scale-100"
+                                ? "-translate-y-6 scale-75 "
+                                : "translate-y-0 scale-100"
                                 }`}
                         >
                             Email address
@@ -175,8 +175,8 @@ const Register = () => {
                         <label
                             htmlFor="password"
                             className={`absolute left-3 top-3 text-gray-600 duration-300 transform ${passwordFocused || inputs.password
-                                    ? "-translate-y-6 scale-75 text-blue-500"
-                                    : "translate-y-0 scale-100"
+                                ? "-translate-y-6 scale-75 text-blue-500"
+                                : "translate-y-0 scale-100"
                                 }`}
                         >
                             Password
@@ -211,8 +211,8 @@ const Register = () => {
                         <label
                             htmlFor="confirmPassword"
                             className={`absolute left-3 top-3 text-gray-600 duration-300 transform ${confirmPasswordFocused || inputs.confirmPassword
-                                    ? "-translate-y-6 scale-75 text-blue-500"
-                                    : "translate-y-0 scale-100"
+                                ? "-translate-y-6 scale-75 text-blue-500"
+                                : "translate-y-0 scale-100"
                                 }`}
                         >
                             Confirm Password
@@ -245,7 +245,7 @@ const Register = () => {
                             placeholder="Role"
                         >
                             <option value=""></option>
-                            <option value="Student">Student</option>
+                            <option value="Student">Artisan</option>
                             <option value="Teacher">Tutor</option>
                             <option value="Tourist">Tourist</option>
                             <option value="Admin">Admin</option>
@@ -253,8 +253,8 @@ const Register = () => {
                         <label
                             htmlFor="role"
                             className={`absolute left-3 top-3 text-gray-500 duration-300 transform ${roleFocused || inputs.role
-                                    ? "-translate-y-6 scale-75 "
-                                    : "translate-y-0 scale-100"
+                                ? "-translate-y-6 scale-75 "
+                                : "translate-y-0 scale-100"
                                 }`}
                         >
                             Role
