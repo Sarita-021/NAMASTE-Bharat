@@ -1,0 +1,17 @@
+
+nav {
+  transition: background-color 0.3s ease;
+ 
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+}
+
+
