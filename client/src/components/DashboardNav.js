@@ -80,13 +80,13 @@ function DashboardNav() {
               <FontAwesomeIcon
                 className="text-white text-2xl mr-2"
                 icon={faBell}
-                shake
+              
               />
             </div>
             <div className="flex flex-col md:flex md:flex-row items-center text-white my-2 md:my-0">
               <Link
                 className=" text-gray-900 px-2 py-1 rounded m-1"
-                to="/register"
+                to="/profile"
               >
                 <img
                    className="min-w-12 h-12  rounded-full"
