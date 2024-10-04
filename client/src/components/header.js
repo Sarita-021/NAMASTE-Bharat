@@ -22,29 +22,34 @@ function Header() {
 
     return (
         <>
-            <nav className="navbar h-32 bg-slate-800 flex items-center justify-between px-5 md:px-10 md:h-20">
+            <nav className="navbar h-32 bg-slate-800 flex items-center justify-between px-5 xl:px-10 xl:h-20 sticky top-0 z-50 ">
                 <div className="flex items-center">
-                    <div id="logo" className="text-white font-bold text-nowrap mr-5 text-2xl text-center py-2">
+                    <div
+                        id="logo"
+                        className="text-white font-bold text-nowrap mr-5 text-2xl text-center py-2"
+                    >
                         NAMASTE-Bharat
                     </div>
                 </div>
-                <div className="flex items-center content-center relative w-full md:w-auto">
+                <div className="flex items-center content-center relative w-full xl:w-auto  xl:mx-5">
                     <input
-                        className="rounded-lg px-3 py-2 md:py-1 pr-8 text-gray-950 outline-none w-full md:w-44"
+                        className="rounded-lg px-3 py-2 xl:py-1 pr-8 text-gray-950 outline-none w-full xl:w-44"
                         placeholder="Search Destination"
                         type="text"
                     />
                     <FontAwesomeIcon
                         className="text-gray-800 ml-2 absolute right-3 align-middle py-2        "
                         icon={faMagnifyingGlass}
-                        shake
+                        // shake
                         rotation={90}
                     />
                 </div>
-                <button className="text-white text-3xl md:hidden ml-4 relative z-10" onClick={toggleMenu}>
+                <button
+                    className="text-white text-3xl xl:hidden ml-4 relative z-10"
+                    onClick={toggleMenu}
+                >
                     <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
                 </button>
-
 
                 {/* ---------------------------------------responsive-div -------------------------- */}
 
