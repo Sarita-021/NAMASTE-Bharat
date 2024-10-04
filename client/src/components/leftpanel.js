@@ -1,46 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate, json } from "react-router-dom";
 
+
 // Define the possible user roles
 const userRoles = {
     Tourist: [
-        { name: "My Details", path: "/traveller/details" },
-        { name: "Destinations", path: "/traveller/destinations" },
+        { name: "My Details", path: "/details" },
+        { name: "My Destinations", path: "/destinations" },
         { name: "Purchase History", path: "/traveller/purchase-history" },
-        { name: "My Learnings", path: "/traveller/learnings" },
-        { name: "Notifications", path: "/traveller/notifications" },
-    ],
-    Tutor: [
-        { name: "Add Item", path: "/craftsman/add-item" },
-        { name: "My Details", path: "/craftsman/details" },
-        { name: "Recent Orders", path: "/craftsman/recent-orders" },
-        { name: "Notifications", path: "/craftsman/notifications" },
-        { name: "Orders Fulfilled", path: "/craftsman/orders-fulfilled" },
+        { name: "My Learnings", path: "/learnings" },
+        { name: "Notifications", path: "/notifications" },
     ],
     Artisan: [
-        { name: "Destinations", path: "/educator/destinations" },
-        { name: "Teach & Track", path: "/educator/teach-track" },
-        { name: "Purchase History", path: "/educator/purchase-history" },
+        { name: "My Details", path: "/details" },
+        { name: "My Destinations", path: "/destinations" },
+        { name: "Product Listing", path: "/educator/product-listing" },
+        { name: "Product Catalog", path: "/educator/product-catalog" },
+        { name: "Order Processing", path: "/educator/order-processing" },
+        { name: "Seller Dashboard", path: "/educator/seller-dashboard" },
+        { name: "Analysis & Report", path: "/educator/analysis-report" },
+        { name: "Notification", path: "/notification" },
     ],
     Admin: [
-        { name: "Add Event", path: "/admin/add-event" },
         { name: "Dashboard", path: "/admin/dashboard" },
-        { name: "Notifications", path: "/admin/notifications" },
-        { name: "Local Communities", path: "/admin/local-communities" },
+        { name: "User Management", path: "/admin/user-management" },
+        { name: "Content Management", path: "/admin/content-management" },
+        { name: "Analysis", path: "/admin/analysis" },
+        { name: "Notifications", path: "/notifications" },
     ],
 };
 
 const LeftPanel = () => {
-    const [role, setRole] = useState([]);
-
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
         if (user) {
             setRole(user.role);
+            setIsLoading(false)
         }
     }, []);
 
+    const [role, setRole] = useState(null);
     const menuitems = userRoles[role];
+    const [isLoading, setIsLoading] = useState(true);
+
+    if (isLoading) {
+        console.log("Iam loading")
+        return <div>Loading...</div>;
+    }
 
     return (
         <>

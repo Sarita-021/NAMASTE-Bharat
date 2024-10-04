@@ -245,8 +245,7 @@ const Register = () => {
                             placeholder="Role"
                         >
                             <option value=""></option>
-                            <option value="Student">Artisan</option>
-                            <option value="Teacher">Tutor</option>
+                            <option value="Artisan">Artisan</option>
                             <option value="Tourist">Tourist</option>
                             <option value="Admin">Admin</option>
                         </select>

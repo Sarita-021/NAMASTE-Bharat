@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 const Purchase_History = () => {
     return (
         <header>
-            <div id="navbar">Header</div>
+            <div id="navbar">Purchase_History</div>
         </header>
     );
 }
