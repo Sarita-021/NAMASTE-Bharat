@@ -54,8 +54,8 @@ function App() {
                     <Route exact path="/educator/seller-dashboard" element={<Seller_Dashboard />} />
                     <Route exact path="/educator/analysis-report" element={<Analysis_Report />} />
                 </Routes>
+                <Footer />
             </Router>
-            <Footer />
         </div>
     );
 }
