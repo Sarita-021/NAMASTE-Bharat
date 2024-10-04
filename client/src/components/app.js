@@ -11,51 +11,50 @@ import My_Destination from "../pages/Traveller/mydestination";
 import My_Learnings from "../pages/Traveller/mylearnings";
 import Notification from "../pages/Traveller/notification";
 import Purchase_History from "../pages/Traveller/purchasehistory";
-import About from "../pages/about"
+import About from "../pages/about";
 import DashboardNav from "./DashboardNav";
 
-
 function App() {
-    return (
-        <div className="App">
-            <Router>
-                <Header />
-                {/* <DashboardNav /> */}
-                <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/register" element={<Register />} />
-                    <Route exact path="/login" element={<Login />} />
-                    <Route exact path="/about" element={<About />} />
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        {/* <DashboardNav /> */}
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/about" element={<About />} />
 
-                    {/* Traveller Routes */}
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydestinations" element={<My_Destination />} />
-                    <Route exact path="/mydetails" element={<My_Learnings />} />
-                    <Route exact path="/mydetails" element={<Purchase_History />} />
-                    <Route exact path="/mydetails" element={<Notification />} />
+          {/* Traveller Routes */}
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydestinations" element={<My_Destination />} />
+          <Route exact path="/mydetails" element={<My_Learnings />} />
+          <Route exact path="/mydetails" element={<Purchase_History />} />
+          <Route exact path="/mydetails" element={<Notification />} />
 
-                    {/* Tutor Routes */}
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
+          {/* Tutor Routes */}
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
 
-                    {/* Admin Routes */}
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
+          {/* Admin Routes */}
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
 
-                    {/* Artisan Routes */}
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                    <Route exact path="/mydetails" element={<My_Details />} />
-                </Routes>
-            </Router>
-            <Footer />
-        </div>
-    );
+          {/* Artisan Routes */}
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
+          <Route exact path="/mydetails" element={<My_Details />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </div>
+  );
 }
 
 export default App;
