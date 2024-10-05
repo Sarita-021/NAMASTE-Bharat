@@ -17,6 +17,15 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: [true, "role is required"]
+    },
+    address: {
+        type: String,
+        default: "Null"
+    },
+    phone: {
+        type: String,
+        required: false,
+        match: [/^\d{10}$/, 'Please enter a valid 10-digit phone number']
     }
 }, { timestamps: true })
 

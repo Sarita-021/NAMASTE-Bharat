@@ -42,7 +42,9 @@ const Login = (props) => {
                 window.localStorage.setItem('user', JSON.stringify(data.user));
                 window.localStorage.setItem('token', JSON.stringify(data.user));
                 toast.success(data.message);
-                navigate("/details");
+                localStorage.setItem("isLogin", true)
+                navigate("/profile");
+                alert(localStorage.getItem('islogin'));
             } else {
                 toast.error(data.message);
             }

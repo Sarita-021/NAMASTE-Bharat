@@ -5,14 +5,14 @@ import { Outlet, NavLink, useNavigate, json } from "react-router-dom";
 // Define the possible user roles
 const userRoles = {
     Tourist: [
-        { name: "My Details", path: "/details" },
+        { name: "My Details", path: "/profile" },
         { name: "My Destinations", path: "/destinations" },
         { name: "Purchase History", path: "/traveller/purchase-history" },
         { name: "My Learnings", path: "/learnings" },
         { name: "Notifications", path: "/notifications" },
     ],
     Artisan: [
-        { name: "My Details", path: "/details" },
+        { name: "My Details", path: "/profile" },
         { name: "My Destinations", path: "/destinations" },
         { name: "Product Listing", path: "/educator/product-listing" },
         { name: "Product Catalog", path: "/educator/product-catalog" },

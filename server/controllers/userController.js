@@ -133,6 +133,22 @@ exports.loginController = async (req, res) => {
     }
 };
 
+exports.getuser = async (req, res) => {
+    const userid = req.headers['userid'];
+    console.log(req.headers['userid'])
+    try {
+        const user = await userModel.findOne({ _id: userid });
+        console.log(user)
+        if (user) {
+            return res.status(200).send({ success: true, user });
+            // return;
+        }
+        res.status(404).send({ success: false });
+    } catch (err) {
+        res.status(500).send({ success: false, error: "Internal Server Error" });
+    }
+}
+
 
 // OTP Mail Sending
 const app = express();

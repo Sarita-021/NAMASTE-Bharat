@@ -1,5 +1,5 @@
 const express = require('express');
-const { getALLUsers, registerController, loginController, OTPController, updatePassword } = require('../controllers/userController');
+const { getALLUsers, registerController, loginController, OTPController, updatePassword, getuser } = require('../controllers/userController');
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -8,6 +8,9 @@ const router = express.Router();
 
 //get all users || get 
 router.get('/all-users', getALLUsers)
+
+//get one user 
+router.get('/getuser', getuser)
 
 // creat user || post
 router.post('/register', registerController)
