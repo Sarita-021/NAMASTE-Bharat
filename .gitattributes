@@ -8,3 +8,4 @@
 .env.development.local
 .env.test.local
 .env.production.local
+*.mp4 filter=lfs diff=lfs merge=lfs -text
