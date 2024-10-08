@@ -90,7 +90,7 @@ function Header() {
             <NavLink className="mx-3 text-white my-2 md:my-0" to="/about">
               About
             </NavLink>
-            <NavLink className="mx-3 text-white my-2 md:my-0" to="/calendar">
+            <NavLink className="mx-3 text-white my-2 md:my-0" to="/Calender">
               Calendar
             </NavLink>
             <NavLink className="mx-3 text-white my-2 md:my-0" to="/shop">

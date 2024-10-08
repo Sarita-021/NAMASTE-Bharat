@@ -25,6 +25,7 @@ import Product_Catalog from "../pages/artisan/productcatalog";
 import Product_Listing from "../pages/artisan/productlisting";
 import Order_Processing from "../pages/artisan/orderprocessing";
 import Seller_Dashboard from "../pages/artisan/sellerdashboard";
+import CalendarHeader from "../pages/Home/Calender";
 
 function App() {
   useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/about" element={<About />} />
+          <Route exact path="/Calender" element={<CalendarHeader />} />
           <Route exact path="/profile" element={<My_Detail />} />
           <Route exact path="/destinations" element={<My_Destination />} />
           <Route exact path="/learnings" element={<My_Learning />} />
