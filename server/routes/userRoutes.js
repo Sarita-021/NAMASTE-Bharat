@@ -1,5 +1,5 @@
 const express = require('express');
-const { getALLUsers, registerController, loginController, OTPController, updatePassword, getuser } = require('../controllers/userController');
+const { getALLUsers, registerController, loginController, OTPController, updatePassword, getuser, updateUser_Controler, uploadImage, getprofilephoto, deleteUser } = require('../controllers/userController');
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -14,6 +14,16 @@ router.get('/getuser', getuser)
 
 // creat user || post
 router.post('/register', registerController)
+
+// update user
+router.put('/updateuser', updateUser_Controler)
+
+// update profilephoto route
+router.put('/profilePhoto', upload.single('avatar'), uploadImage)
+
+router.get('/profilePicture', getprofilephoto)
+
+router.delete("/delete", deleteUser);
 
 // login || post 
 router.post('/login', loginController)

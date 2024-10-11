@@ -1,154 +1,322 @@
+// Required modules
 const userModel = require('../models/userModel');
-// const bcrypt = require("bcrypt");
-const nodemailer = require("nodemailer");
-const express = require('express');
-const cors = require('cors');
-const Jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
+const nodemailer = require("nodemailer"); // For sending emails (if needed)
+const express = require('express'); // Express framework
+const cors = require('cors'); // Enable CORS (Cross-Origin Resource Sharing)
+const Jwt = require('jsonwebtoken'); // For JSON Web Token (JWT) authentication
+const dotenv = require('dotenv'); // For environment variable management
+// Multer setup for file uploads (in memory storage)
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage }); // Store uploaded files in memory
 
-//create user register user
+// User registration controller
 exports.registerController = async (req, res) => {
-
     try {
+        // Extract user data from request body
+        const { username, email, password, role } = req.body;
 
-        //fetching details form frontend
-        const { username, email, password, role } = req.body
-
-        //Confirming if user has entered all the required details 
+        // Ensure all required fields are provided
         if (!username || !email || !password || !role) {
             return res.status(400).send({
                 success: false,
-                message: "OOPS!! all fields are required."
-            })
+                message: "OOPS!! All fields are required."
+            });
         }
 
-        // checking if user already exists
-        const exisitingUser = await userModel.findOne({ email })
-        if (exisitingUser) {
+        // Check if the user already exists in the database
+        const existingUser = await userModel.findOne({ email });
+        if (existingUser) {
             return res.status(401).send({
                 success: false,
                 message: 'User already exists!!'
-            })
+            });
         }
 
-        const user = new userModel({ username, email, password, role })
-        await user.save()
+        // Create a new user instance and save it to the database
+        const user = new userModel({ username, email, password, role });
+        await user.save();
+
+        // Generate JWT token for user authentication
         Jwt.sign({ user }, process.env.JWT_KEY, { expiresIn: "2h" }, (err, token) => {
             if (err) {
-                res.send({ result: "something went wrong, Please try again after some time." })
+                return res.send({ result: "Something went wrong, please try again later." });
             }
-            return res.status(201).send({ user, auth: token, success: true, message: 'Registered Successfully', })
-        })
-    } catch (error) {     //handling errors
-        console.log(error)
+            return res.status(201).send({
+                user,
+                auth: token,
+                success: true,
+                message: 'Registered Successfully',
+            });
+        });
+    } catch (error) { // Handle errors
+        console.log(error);
         return res.status(500).send({
             message: 'Error in Register callback',
             success: false,
             error
-        })
+        });
     }
 };
 
-
-//getting all users
+// Fetch all users controller
 exports.getALLUsers = async (req, res) => {
     try {
-        const users = await userModel.find({})
+        // Retrieve all users from the database
+        const users = await userModel.find({});
         return res.status(200).send({
             userCount: users.length,
             success: true,
             message: 'All user data',
             users
-        })
-    } catch (error) {
-        console.log(error)
+        });
+    } catch (error) { // Handle errors
+        console.log(error);
         return res.status(500).send({
             success: false,
             message: 'Error in Getting All Users',
             error
-        })
+        });
     }
 };
 
-
-//login controller
+// User login controller
 exports.loginController = async (req, res) => {
     try {
+        // Extract email and password from request body
+        const { email, password } = req.body;
 
-        //fetching email and password entered by user
-        const { email, password } = req.body
-
-        //validating if user entered both
+        // Validate input
         if (!email || !password) {
             return res.status(400).send({
                 success: false,
                 message: "Please enter email and password."
-            })
+            });
         }
 
-        // Checking if user exists or not
-        const user = await userModel.findOne({ email })   //Checking mail id in db
+        // Check if the user exists in the database
+        const user = await userModel.findOne({ email });
 
-
-        if (!user) {    //handling if user does not exists
+        if (!user) { // If user does not exist
             return res.status(404).send({
                 success: true,
                 message: 'Email is not registered.'
-            })
+            });
         }
 
-        // checking if password entered is correct
-
-        var valid = user.verifyPasswordSync(password);
-        if (valid) {
-            console.log('Valid (sync)');
-        } else {                                        //handling if password does not match
+        // Verify password (assuming `verifyPasswordSync` checks password)
+        const valid = user.verifyPasswordSync(password);
+        if (!valid) { // If password is incorrect
             return res.status(401).send({
                 success: false,
                 message: 'Invalid email or password.',
-            })
+            });
         }
 
+        // If credentials are correct, generate JWT token
         if (user && valid) {
             Jwt.sign({ user }, process.env.JWT_KEY, { expiresIn: "2h" }, (err, token) => {
                 if (err) {
-                    res.send({ result: "something went wrong, Please try again after some time." })
+                    return res.send({ result: "Something went wrong, please try again later." });
                 }
-                res.send({ user, auth: token })
-            })
-            return res.status(200).send({       //All credentials matched
-                success: true,                  //user ready for login
-                message: 'Login Successfully',
-                user
-            })
-        }
 
-    } catch (error) {                       //handling unexpected errors
-        console.log(error)
+                // Send user data and authentication token
+                return res.status(200).send({
+                    success: true,
+                    message: 'Login Successfully',
+                    user,
+                    data: {
+                        userid: user._id,
+                        username: user.username,
+                        email: user.email,
+                        role: user.role,
+                        address: user.address,
+                        about: user.about,
+                        phone: user.phone,
+                    },
+                    auth: token
+                });
+            });
+        }
+    } catch (error) { // Handle errors
+        console.log(error);
         return res.status(500).send({
             success: false,
             message: 'Error in login callback',
             error
-        })
+        });
     }
 };
 
+// Get single user data based on user ID
 exports.getuser = async (req, res) => {
-    const userid = req.headers['userid'];
-    console.log(req.headers['userid'])
+    const userid = req.headers['userid']; // Retrieve user ID from request headers
+
     try {
         const user = await userModel.findOne({ _id: userid });
-        console.log(user)
-        if (user) {
-            return res.status(200).send({ success: true, user });
-            // return;
+
+        if (user) { // If user found, send user data
+            return res.status(200).send({
+                success: true,
+                data: {
+                    userid: user._id,
+                    username: user.username,
+                    email: user.email,
+                    role: user.role,
+                    address: user.address,
+                    about: user.about,
+                    phone: user.phone
+                },
+            });
         }
+
+        // If user not found, return 404
         res.status(404).send({ success: false });
-    } catch (err) {
+    } catch (err) { // Handle errors
         res.status(500).send({ success: false, error: "Internal Server Error" });
     }
-}
+};
 
+// Get user profile photo
+exports.getprofilephoto = async (req, res) => {
+    try {
+        const email = req.headers['email']; // Retrieve email from request headers
+
+        if (!email) {
+            return res.status(400).json({ error: 'Email is required' });
+        }
+
+        const user = await userModel.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // If user has a profile photo, send it
+        if (user.profilePhoto && user.profilePhoto.data) {
+            res.contentType(user.profilePhoto.contentType);
+            return res.send(user.profilePhoto.data);
+        }
+
+        // Fallback: redirect to a default profile image
+        return res.redirect('https://cdn-icons-png.flaticon.com/512/3135/3135715.png');
+    } catch (error) {
+        console.error('Error fetching user image:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+// Controller for uploading a profile photo
+exports.uploadImage = async (req, res, next) => {
+    try {
+        const email = req.headers['email']; // Retrieve email from request headers
+        console.log(email)
+        // Find user by email
+        const user = await userModel.findOne({ email });
+        console.log(user)
+
+        // Prepare the profile photo data from the file buffer
+        const obj = {
+            profilePhoto: {
+                data: req.file.buffer,
+                contentType: req.file.mimetype
+            }
+        };
+
+        if (user) {
+            // Update user profile photo or retain the existing one
+            user.profilePhoto = obj.profilePhoto || user.profilePhoto;
+        }
+
+        // Save the updated user data
+        const updatedUser = await user.save();
+
+        // Respond with success message
+        res.status(200).json({
+            success: true,
+            message: "Profile Photo updated successfully",
+            updatedUser,
+        });
+    } catch (err) { // Handle errors
+        console.error(err);
+        res.status(500).send('Error while uploading the image');
+    }
+};
+
+// Update user details controller
+exports.updateUser_Controler = async (req, res) => {
+    try {
+        const email = req.headers['email']; // Retrieve email from request headers
+
+        // Find user by email
+        const user = await userModel.findOne({ email: email });
+
+        if (!user) { // If user not found
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update user data with new values from request body
+        if (user) {
+            user.username = req.body.username || user.username;
+            user.phone = req.body.phone || user.phone;
+            user.address = req.body.address || user.address;
+        }
+
+        // Save the updated user data
+        const updatedUser = await user.save();
+
+        // Respond with success and updated user data
+        res.status(200).json({
+            success: true,
+            message: "User data updated successfully",
+            data: {
+                username: updatedUser.username,
+                email: updatedUser.email,
+                role: updatedUser.role,
+                address: updatedUser.address,
+                about: updatedUser.about,
+                phone: updatedUser.phone
+            },
+        });
+    } catch (err) { // Handle errors
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
+
+// delete user
+
+exports.deleteUser = async (req, res) => {
+    const objectId = req.headers['userid']; // Retrieve email from request headers
+    // Find user by email
+    // const user = await userModel.findOne({ email: email });
+
+    try {
+        // Find the user by ID and delete
+        const deletedUser = await userModel.findByIdAndDelete({ _id: objectId });
+        console.log(deletedUser)
+        // Check if user was found and deleted
+        if (!deletedUser) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        // If deletion is successful
+        return res.status(200).json({
+            success: true,
+            message: "User deleted successfully",
+            data: deletedUser,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Server error while deleting user",
+        });
+    }
+};
 
 // OTP Mail Sending
 const app = express();
