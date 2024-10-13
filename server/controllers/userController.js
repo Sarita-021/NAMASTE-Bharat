@@ -236,6 +236,15 @@ exports.uploadImage = async (req, res, next) => {
             success: true,
             message: "Profile Photo updated successfully",
             updatedUser,
+            data: {
+                userid: updatedUser._id,
+                username: updatedUser.username,
+                email: updatedUser.email,
+                role: updatedUser.role,
+                address: updatedUser.address,
+                about: updatedUser.about,
+                phone: updatedUser.phone,
+            },
         });
     } catch (err) { // Handle errors
         console.error(err);
@@ -270,6 +279,7 @@ exports.updateUser_Controler = async (req, res) => {
             success: true,
             message: "User data updated successfully",
             data: {
+                userid: updatedUser._id,
                 username: updatedUser.username,
                 email: updatedUser.email,
                 role: updatedUser.role,
