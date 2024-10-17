@@ -26,6 +26,8 @@ import Product_Listing from "../pages/artisan/productlisting";
 import Order_Processing from "../pages/artisan/orderprocessing";
 import Seller_Dashboard from "../pages/artisan/sellerdashboard";
 import CalendarHeader from "../pages/Home/Calender";
+import Maplive from "../pages/Home/map/Maplive";
+import Livedirect from "../pages/Home/map/Livedirect";
 
 function App() {
   useEffect(() => {
@@ -52,6 +54,8 @@ function App() {
           <Route exact path="/destinations" element={<My_Destination />} />
           <Route exact path="/learnings" element={<My_Learning />} />
           <Route exact path="/notifications" element={<Notification />} />
+          <Route exact path="/Maplive" element={<Maplive />} />
+          <Route exact path="/Livedirect" element={<Livedirect />} />
 
           {/* Traveller Routes */}
           <Route

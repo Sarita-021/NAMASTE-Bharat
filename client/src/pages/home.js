@@ -5,6 +5,7 @@ import Section2 from "./Home/Section2";
 import AutoSlider from "./Home/Autoslider";
 import Calendar from "./Home/Calender";
 import Favtour from "./Home/Favtour";
+import Mapnavi from "./Home/Mapnavi";
 
 function Home() {
   return (
@@ -17,6 +18,7 @@ function Home() {
       <AutoSlider />
       <Favtour />
       <Calendar />
+      <Mapnavi />
     </div>
   );
 }

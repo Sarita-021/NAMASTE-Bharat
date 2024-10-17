@@ -1,0 +1,27 @@
+.map-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.location-input {
+    border: 1px solid gainsboro;
+    padding: 10px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.search-button,
+.directions-button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover,
+.directions-button:hover {
+    background-color: #0056b3;
+}

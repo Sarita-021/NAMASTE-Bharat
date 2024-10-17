@@ -1,0 +1,81 @@
+.map-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.location-input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.search-button,
+.directions-button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover,
+.directions-button:hover {
+    background-color: #0056b3;
+}
+
+.tooltip-content {
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    /* Set a fixed width */
+    word-wrap: break-word;
+    /* Ensure words break */
+    word-break: break-all;
+    /* Break long words if needed */
+    overflow: hidden;
+    /* Prevent overflow */
+}
+
+.place-image {
+    width: 100%;
+    /* Make the image fill the tooltip width */
+    height: auto;
+    /* Maintain the aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.tooltip-content h3 {
+    font-size: 14px;
+    margin: 5px 0;
+    font-weight: bold;
+    word-wrap: break-word;
+    /* Ensure title wraps inside */
+}
+
+.tooltip-content p {
+    font-size: 12px;
+    margin: 5px 0;
+    line-height: 1.2;
+    text-align: left;
+    white-space: normal;
+    /* Allow text to wrap to the next line */
+    word-break: break-word;
+    /* Ensure words break to the next line */
+}
+
+.tooltip-content small {
+    font-size: 10px;
+    color: gray;
+    text-align: left;
+    line-height: 1.2;
+    white-space: normal;
+    /* Ensure text breaks to the next line */
+    word-break: break-word;
+    /* Break long words when necessary */
+}
