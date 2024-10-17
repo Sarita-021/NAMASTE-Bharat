@@ -105,7 +105,7 @@ const My_Detail = () => {
           email: user.email,
         },
       });
-      setChng(false);
+
       // Update localStorage with the updated user data
       window.localStorage.setItem("user", JSON.stringify(res.data.updatedUser));
 
@@ -174,7 +174,6 @@ const My_Detail = () => {
       toast.error("Error deleting the user");
     }
   };
-  //   update profile image
 
   // Toggles the edit mode for user details
   const toggleEditing = () => {
