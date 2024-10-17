@@ -45,12 +45,6 @@ const My_Detail = () => {
           responseType: "blob", // Ensures we receive image data in binary format
         });
 
-        // Convert the blob to a URL to be used as an image source
-
-        if (!response.ok) {
-          throw new Error("Image not found");
-        }
-
         // Ensure the response is an image (binary data)
         const contentType = response.headers.get("content-type");
         if (!contentType || !contentType.startsWith("image")) {
@@ -93,6 +87,7 @@ const My_Detail = () => {
     e.preventDefault(); // Prevent default form submission
     setError(""); // Clear previous errors
     setIsUploading(true); // Start upload process
+    setChng(false);
 
     const formData = new FormData(); // Create form data object
     formData.append("avatar", selectedFile); // Append the selected file
@@ -143,7 +138,7 @@ const My_Detail = () => {
       );
 
       // Update localStorage with the updated user data
-      window.localStorage.setItem("user", JSON.stringify(res.data.updatedUser));
+      window.localStorage.setItem("user", JSON.stringify(res.data.data));
       setIsEditing(false); // Exit edit mode
     } catch (err) {
       setError("Error updating user details.");

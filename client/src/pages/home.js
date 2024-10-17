@@ -4,6 +4,7 @@ import HeroSection from "./Home/Section";
 import Section2 from "./Home/Section2";
 import AutoSlider from "./Home/Autoslider";
 import Calendar from "./Home/Calender";
+import Favtour from "./Home/Favtour";
 
 function Home() {
   return (
@@ -14,7 +15,7 @@ function Home() {
       <Section2 />
       <br />
       <AutoSlider />
-
+      <Favtour />
       <Calendar />
     </div>
   );
