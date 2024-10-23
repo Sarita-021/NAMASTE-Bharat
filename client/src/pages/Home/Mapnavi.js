@@ -9,7 +9,7 @@ function Mapnavi() {
   };
 
   return (
-    <div className="relative w-full h-[500px] group">
+    <div className="relative w-full h-[500px] group mb-2">
       {/* Background image */}
       <img
         className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-100 rounded-lg"

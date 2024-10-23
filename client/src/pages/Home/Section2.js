@@ -63,7 +63,9 @@ const Section2 = () => {
             />
             <div className="absolute grid content-end  inset-0 p-6 opacity-0 justify-items-center hover:opacity-100 transition-opacity duration-300 ease-in-out">
               <div>
-                <h3 className="text-xl text-white  font-semibold">Charminar</h3>
+                <h3 className="text-xl text-white pl-4  font-semibold">
+                  Charminar
+                </h3>
 
                 <a
                   href="/"
@@ -107,7 +109,9 @@ const Section2 = () => {
             />
             <div className="absolute grid content-end  inset-0 p-6 opacity-0 justify-items-center hover:opacity-100 transition-opacity duration-300 ease-in-out">
               <div>
-                <h3 className="text-xl text-white  font-semibold">Red Fort</h3>
+                <h3 className="text-xl text-white pl-5 font-semibold">
+                  Red Fort
+                </h3>
 
                 <a
                   href="/"
