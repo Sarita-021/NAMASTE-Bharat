@@ -34,15 +34,7 @@ const Section = () => {
         <div className="absolute inset-0 bg-black bg-opacity-10 rounded-2xl"></div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col justify-center items-start h-full px-4">
-          {/* Greeting Text
-          <h1 className="text-white text-4xl lg:text-6xl font-extrabold mb-4">
-            Adventure Awaits:
-          </h1>
-          <p className="text-white text-xl lg:text-2xl mb-8">
-            Discover the Thrill of Traveling Off the Beaten Path
-          </p> */}
-        </div>
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col justify-center items-start h-full px-4"></div>
 
         {/* Search Bar - Positioned at the bottom, half inside and half outside the image */}
         <div className="relative z-20 w-full max-w-7xl mx-auto -mt-20">
