@@ -14,7 +14,7 @@ import My_Detail from "../pages/details";
 import My_Destination from "../pages/destination";
 import My_Learning from "../pages/mylearnings";
 import Notification from "../pages/notification";
-import Purchase_History from "../pages/traveller/purchasehistory";
+import Purchase_History from "../pages/Traveller/purchasehistory";
 import About from "../pages/about";
 import Dashboard from "../pages/admin/dashboard";
 import User_Management from "../pages/admin/usermanagement";
